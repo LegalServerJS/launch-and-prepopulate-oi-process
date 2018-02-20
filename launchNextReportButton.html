@@ -1,0 +1,19 @@
+<!-- Instruction for the online intake process that launches the next and autopopulates it-->
+
+<div id="launcherbutton" style="background-color:#9d953B;color:#fff;border-radius:15px;padding:1em;cursor:pointer;"> File your report immediately </div>
+
+
+
+<script type="text/javascript">
+
+	function launchNextReport() {
+		//Grab the content of the field you want to preload into the next form.
+		var targetfield = document.evaluate(".//div[label[contains(text(), '[label-of-field-you-are-looking-for]')]]/span/span/text()", document.body, null, XPathResult.ANY_TYPE, null).iterateNext().textContent;
+		var nextFormURL = "[some-url]" + targetfield;
+		window.open(nextFormURL,"_blank");
+	}
+
+	var button = document.getElementById("launcherbutton");
+	button.addEventListener('click', launchNextReport);
+
+</script>

@@ -1,0 +1,28 @@
+<!-- Instruction for the online intake process that gets launched and autopopulated -->
+
+<script type="text/javascript">
+  
+function getParameterByName(name, url) {
+    //Thanks Matt Stubenberg for this function!
+    //Gets the name of a specified parameter from the URL.
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+};
+
+// Grab any other parameters you've passed from the first process.
+prepopulateInfo =getParameterByName('[field-to-prepopulate]');;
+
+
+if(prepopulateInfo) {
+
+    //insert the field where it should go in this process.
+    document.getElementsByName("[field-name]")[0].value = prepopulateInfo;
+
+}
+
+</script>
